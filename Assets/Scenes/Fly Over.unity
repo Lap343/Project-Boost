@@ -396,7 +396,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.25842255, y: -0, z: -0, w: 0.96603197}
-  m_LocalPosition: {x: 23.35, y: 15.93, z: -20.75}
+  m_LocalPosition: {x: 23.35, y: 21.9, z: -20.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -444,14 +444,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 749235911, guid: 999c49775b3170a4484abc9c7cd6b253, type: 3}
-      propertyPath: SucessChime
-      value: 
-      objectReference: {fileID: 8300000, guid: 10bc76bc2ee8bcf44aa2c08be694b7f6, type: 3}
-    - target: {fileID: 749235911, guid: 999c49775b3170a4484abc9c7cd6b253, type: 3}
-      propertyPath: DeathExplosion
-      value: 
-      objectReference: {fileID: 8300000, guid: 4fc963499a55acc42a22dcd3f3b4bb8b, type: 3}
     - target: {fileID: 802347334137635532, guid: 999c49775b3170a4484abc9c7cd6b253, type: 3}
       propertyPath: m_Name
       value: Player

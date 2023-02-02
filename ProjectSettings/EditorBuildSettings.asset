@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fly Under.unity
     guid: d829eaef217b6a94a9f41395a61a5bdc
+  - enabled: 1
+    path: Assets/Scenes/Fly Under Over.unity
+    guid: 019ad85af2dd21242b734f53d4373353
   m_configObjects: {}

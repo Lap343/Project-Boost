@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
     AudioSource audioSource;
+    bool isTransitioning = false;
 
     [SerializeField] float delayTime = 1f;
     [SerializeField] AudioClip DeathExplosion;
@@ -17,6 +18,8 @@ public class CollisionHandler : MonoBehaviour
 
     void OnCollisionEnter(Collision other) 
     {
+        if (isTransitioning) { return; }
+
         switch (other.gameObject.tag)
         {
             case "Friendly":
@@ -33,6 +36,8 @@ public class CollisionHandler : MonoBehaviour
 
     void StartCrashSequence()
     {
+        isTransitioning = true;
+        audioSource.Stop();
         GetComponent<Movement>().enabled = false;
         audioSource.PlayOneShot(DeathExplosion);
         Invoke("ReloadLevel", delayTime);
@@ -40,6 +45,8 @@ public class CollisionHandler : MonoBehaviour
 
     void StartNextLevelSequence()
     {
+        isTransitioning = true;
+        audioSource.Stop();
         GetComponent<Movement>().enabled = false;
         audioSource.PlayOneShot(SucessChime);
         Invoke("LoadNextLevel", delayTime);
