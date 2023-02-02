@@ -3,7 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+    AudioSource audioSource;
+
     [SerializeField] float delayTime = 1f;
+    [SerializeField] AudioClip DeathExplosion;
+    [SerializeField] AudioClip SucessChime;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void OnCollisionEnter(Collision other) 
     {
@@ -24,12 +34,14 @@ public class CollisionHandler : MonoBehaviour
     void StartCrashSequence()
     {
         GetComponent<Movement>().enabled = false;
+        audioSource.PlayOneShot(DeathExplosion);
         Invoke("ReloadLevel", delayTime);
     }
 
     void StartNextLevelSequence()
     {
         GetComponent<Movement>().enabled = false;
+        audioSource.PlayOneShot(SucessChime);
         Invoke("LoadNextLevel", delayTime);
     }
 

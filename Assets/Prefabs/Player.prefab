@@ -375,6 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainThrust: 1000
   rotationThrust: 150
+  mainEngine: {fileID: 8300000, guid: 462deed840cd00648b726226d9949921, type: 3}
 --- !u!114 &749235911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,6 +389,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayTime: 1
+  DeathExplosion: {fileID: 8300000, guid: 4fc963499a55acc42a22dcd3f3b4bb8b, type: 3}
+  SucessChime: {fileID: 8300000, guid: 10bc76bc2ee8bcf44aa2c08be694b7f6, type: 3}
 --- !u!1 &1769094838416340136
 GameObject:
   m_ObjectHideFlags: 0
