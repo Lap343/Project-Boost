@@ -7,8 +7,11 @@ public class CollisionHandler : MonoBehaviour
     bool isTransitioning = false;
 
     [SerializeField] float delayTime = 1f;
-    [SerializeField] AudioClip DeathExplosion;
+    [SerializeField] AudioClip CrashExplosion;
     [SerializeField] AudioClip SucessChime;
+    
+    [SerializeField] ParticleSystem crashParticles;
+    [SerializeField] ParticleSystem sucessParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +42,8 @@ public class CollisionHandler : MonoBehaviour
         isTransitioning = true;
         audioSource.Stop();
         GetComponent<Movement>().enabled = false;
-        audioSource.PlayOneShot(DeathExplosion);
+        audioSource.PlayOneShot(CrashExplosion);
+        crashParticles.Play();
         Invoke("ReloadLevel", delayTime);
     }
 
@@ -49,6 +53,7 @@ public class CollisionHandler : MonoBehaviour
         audioSource.Stop();
         GetComponent<Movement>().enabled = false;
         audioSource.PlayOneShot(SucessChime);
+        sucessParticles.Play();
         Invoke("LoadNextLevel", delayTime);
     }
 
