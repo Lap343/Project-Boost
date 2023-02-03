@@ -38,8 +38,7 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            audioSource.Stop();
-            mainBoosterParticles.Stop();
+            StopThrusting();
         }
     }
 
@@ -56,34 +55,55 @@ public class Movement : MonoBehaviour
         }
     }
 
+    void StopThrusting()
+    {
+        audioSource.Stop();
+        mainBoosterParticles.Stop();
+    }
+
     void ProcessDirection()
     {
         if(Input.GetKey(KeyCode.A))
         {
-            ApplyRotation(rotationThrust);
-
-            if (!booster1Particles.isPlaying)
-            {
-                booster1Particles.Play();
-                booster2Particles.Play();
-            }
+            RotateLeft();
         }
         else if(Input.GetKey(KeyCode.D))
         {
-            ApplyRotation(-rotationThrust);
-            
-            if (!booster3Particles.isPlaying)
-            {
-                booster3Particles.Play();
-                booster2Particles.Play();
-            }
+            RotateRight();
         }
         else
         {
-            booster1Particles.Stop();
-            booster2Particles.Stop();
-            booster3Particles.Stop();
+            StopRotating();
         }
+    }
+
+    void RotateLeft()
+    {
+        ApplyRotation(rotationThrust);
+
+        if (!booster1Particles.isPlaying)
+        {
+            booster1Particles.Play();
+            booster2Particles.Play();
+        }
+    }
+
+    void RotateRight()
+    {
+        ApplyRotation(-rotationThrust);
+
+        if (!booster3Particles.isPlaying)
+        {
+            booster3Particles.Play();
+            booster2Particles.Play();
+        }
+    }
+
+    void StopRotating()
+    {
+        booster1Particles.Stop();
+        booster2Particles.Stop();
+        booster3Particles.Stop();
     }
 
     void ApplyRotation(float rotationThisFrame)
