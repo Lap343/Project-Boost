@@ -10,6 +10,11 @@ public class Movement : MonoBehaviour
     [SerializeField] float mainThrust = 0;
     [SerializeField] float rotationThrust = 0;
     [SerializeField] AudioClip mainEngine;
+    
+    [SerializeField] ParticleSystem booster1Particles;
+    [SerializeField] ParticleSystem booster2Particles;
+    [SerializeField] ParticleSystem booster3Particles;
+    [SerializeField] ParticleSystem mainBoosterParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -29,15 +34,25 @@ public class Movement : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Space))
         {
-            rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
-            if(!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(mainEngine);
-            }
+            StartThrusting();
         }
         else
         {
             audioSource.Stop();
+            mainBoosterParticles.Stop();
+        }
+    }
+
+    void StartThrusting()
+    {
+        rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(mainEngine);
+        }
+        if (!mainBoosterParticles.isPlaying)
+        {
+            mainBoosterParticles.Play();
         }
     }
 
@@ -46,17 +61,33 @@ public class Movement : MonoBehaviour
         if(Input.GetKey(KeyCode.A))
         {
             ApplyRotation(rotationThrust);
+
+            if (!booster1Particles.isPlaying)
+            {
+                booster1Particles.Play();
+                booster2Particles.Play();
+            }
         }
         else if(Input.GetKey(KeyCode.D))
         {
             ApplyRotation(-rotationThrust);
+            
+            if (!booster3Particles.isPlaying)
+            {
+                booster3Particles.Play();
+                booster2Particles.Play();
+            }
+        }
+        else
+        {
+            booster1Particles.Stop();
+            booster2Particles.Stop();
+            booster3Particles.Stop();
         }
     }
 
     void ApplyRotation(float rotationThisFrame)
     {
-        // rb.freezeRotation = true; 
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
-        // rb.freezeRotation = false; 
     }
 }
