@@ -5,6 +5,7 @@ public class CollisionHandler : MonoBehaviour
 {
     AudioSource audioSource;
     bool isTransitioning = false;
+    bool isCollisionOn = false;
 
     [SerializeField] float delayTime = 1f;
     [SerializeField] AudioClip CrashExplosion;
@@ -19,9 +20,27 @@ public class CollisionHandler : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        ToggleCollision();
+        if (Input.GetKey(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+    }
+
+    void ToggleCollision()
+    {
+        if (Input.GetKey(KeyCode.C))
+        {
+            isCollisionOn = !isCollisionOn;
+        }
+    }
+
     void OnCollisionEnter(Collision other) 
     {
-        if (isTransitioning) { return; }
+        if (isTransitioning || isCollisionOn) { return; }
 
         switch (other.gameObject.tag)
         {
