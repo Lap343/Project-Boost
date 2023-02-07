@@ -23,18 +23,18 @@ public class CollisionHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ToggleCollision();
-        if (Input.GetKey(KeyCode.L))
-        {
-            LoadNextLevel();
-        }
+        RespondToDebugKeys();
     }
 
-    void ToggleCollision()
+    void RespondToDebugKeys()
     {
         if (Input.GetKey(KeyCode.C))
         {
             isCollisionOn = !isCollisionOn;
+        }
+        else if (Input.GetKey(KeyCode.L))
+        {
+            LoadNextLevel();
         }
     }
 
