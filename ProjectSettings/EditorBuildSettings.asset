@@ -7,11 +7,17 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Fly Over.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    guid: 47345963e270f414c8da98a881289e39
   - enabled: 1
     path: Assets/Scenes/Fly Under.unity
-    guid: d829eaef217b6a94a9f41395a61a5bdc
+    guid: f1ce090a016999e4288d1cd8d3ed6d68
   - enabled: 1
-    path: Assets/Scenes/Fly Under Over.unity
-    guid: 019ad85af2dd21242b734f53d4373353
+    path: Assets/Scenes/Fly Over Under.unity
+    guid: e7de389076d396e4b889b158d8ab5226
+  - enabled: 1
+    path: Assets/Scenes/Fly Through.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Fly Around.unity
+    guid: b502e3295a214fd4082a2ec792d5e174
   m_configObjects: {}
